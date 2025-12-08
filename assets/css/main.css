@@ -144,12 +144,12 @@ h6 {
 --------------------------------------------------------------*/
 .header {
  
- 
+  position: relative;
   background:linear-gradient(to right,#000000f1, #000000a8);
   backdrop-filter: blur(25px);
   padding: 5px 0;
   transition: all 0.5s;
-  z-index: 997;
+  z-index: 9979;
 }
 
 .header .logo {
@@ -310,7 +310,7 @@ h6 {
   .navmenu ul {
     display: none;
     list-style: none;
-    position: fixed;
+    position: fixed !important;
     inset: 60px 20px 20px 20px;
     padding: 10px 0;
     margin: 0;
@@ -318,7 +318,7 @@ h6 {
     background-color: #fff;
     overflow-y: auto;
     transition: 0.3s;
-    z-index: 9998;
+    z-index: 99989 !important;
     height: 90vh;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
@@ -2581,7 +2581,7 @@ section,
   .navmenu ul {
     display: none;
     list-style: none;
-    position: fixed;
+    position: fixed !important;
     inset: 60px 20px 20px 20px;
     padding: 10px 0;
     margin: 0;
@@ -2589,7 +2589,7 @@ section,
     background-color: #fff;
     overflow-y: auto;
     transition: 0.3s;
-    z-index: 999899;
+    z-index: 99989 !important;
     height: 90vh;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
