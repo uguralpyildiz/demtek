@@ -14,7 +14,7 @@
 :root {
   --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Montserrat",  sans-serif;
-  --nav-font: "Raleway",  sans-serif;
+  --nav-font: "Montserrat",  sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -22,7 +22,7 @@
   --background-color: #000000; /* Background color for the entire website, including individual sections */
   --default-color: #FFFFFF; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #FFFFFF; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #0051ff; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #157a97; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #fff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #fff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -34,7 +34,7 @@
   --nav-mobile-background-color: #000000; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #000000; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #212529; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #0051ff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-hover-color: #157a97; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -43,7 +43,9 @@
   --background-color: #f6fcfe;
   --surface-color: #000000;
 }
-
+.btn-primary{
+  background: #157a97;
+}
 .dark-background {
   --background-color: #FFFFFF;
   --default-color: #000000;
@@ -51,6 +53,7 @@
   --surface-color: #FFFFFF;
   --contrast-color: #fff;
 }
+
 
 /* Smooth scroll */
 :root {
@@ -145,7 +148,7 @@ h6 {
 .header {
  
  
-  background: #fff;
+  background: linear-gradient(to right, #111111, #112c33);
   padding: 5px 0;
   transition: all 0.5s;
   z-index: 997;
@@ -200,12 +203,12 @@ h6 {
 
   .navmenu a,
   .navmenu a:focus {
-    color: #000;
+    color: #f5f5f5;
     padding: 5px 15px;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid transparent;
     font-size: 16px;
     font-family: var(--nav-font);
-    font-weight: 400;
+    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -225,11 +228,15 @@ h6 {
     padding-right: 0;
   }
 
+  .nav-top{
+    background: #000;
+    height: 100px;
+  }
   .navmenu li:hover>a,
   .navmenu .active,
   .navmenu .active:focus {
-    color: #000;
-    border-bottom: 2px solid #0051ff;
+    color: #fff;
+    border-bottom: 2px solid #4ab8d6;
     
   }
 
@@ -293,7 +300,7 @@ h6 {
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
-    color: #000;
+    color: #fff;
     font-size: 28px;
     line-height: 0;
     margin-right: 10px;
@@ -1346,7 +1353,7 @@ section,
 }
 .project-title0{
   padding: 10px;
-  border-left: 3px solid #0051ff;
+  border-left: 3px solid #157a97;
   
 }
 .testimonials .testimonial-item .stars {
@@ -2555,4 +2562,22 @@ section,
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
+}
+.swiper-slide img {
+  border-radius: 5px !important;
+
+}
+
+@media screen and (max-width:800px) {
+  .mobiler {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: start !important;
+      padding: 5px !important;
+      margin: 10px;
+      background: #157a9710;
+      color: #000 !important;
+      border: 1px solid #157a9720 !important;
+      width: 200px;
+    }
 }

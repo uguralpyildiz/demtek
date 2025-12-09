@@ -133,6 +133,7 @@
       }
     </style>
 
+
     <section class="projects-hero d-flex align-items-center">
       <div class="container z-2">
         <div class="row justify-content-center text-center">
@@ -170,7 +171,7 @@
       .projects-hero {
         position: relative;
         min-height: 70vh;
-        background: url('projects-bg.jpg') center center/cover no-repeat;
+        background: url('https://images.unsplash.com/photo-1733522300394-80f3a7fa6109?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center/cover no-repeat;
         padding: 100px 0;
         color: #fff;
       }
@@ -208,7 +209,7 @@
   /* Thumbnail görüntüleri: normalde gri, aktif renkli */
 .thumbSwiper .swiper-slide img {
   filter: grayscale(1);
-  border-radius: 5px;
+  border-radius: 0px;
   opacity: 0.7;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -318,7 +319,7 @@
         <!-- LEFT: SLIDER -->
         <div class="col-xl-8 p-0">
 
-          <div class="swiper mainSwiper position-relative" style="border-radius: 5px;">
+          <div class="swiper mainSwiper position-relative" style="border-radius: 0px;">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img src="newimg/1 (1).jpeg" class="img-fluid w-100" alt="">
@@ -358,7 +359,7 @@
         <div class="col-xl-12  text-dark p-4" style="padding-top: 20px !important; ">
 
           <h3 class="fw-bold mb-3 text-dark">
-            <span style="color:#3c7fff;">Demtek Prothom</span><br>
+            <span style="color:#157a97;">Demtek Prothom</span><br>
             %50 Peşin – Kalan %0 Faiz ile 12 Ay Taksit
           </h3>
 
@@ -444,7 +445,7 @@
         <!-- LEFT: SLIDER -->
         <div class="col-xl-6 p-0">
 
-          <div class="swiper mainSwiper position-relative" style="border-radius: 5px;">
+          <div class="swiper mainSwiper position-relative" style="border-radius: 0px;">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img src="newimg/2 (1).jpeg" class="img-fluid w-100" alt="">
@@ -484,7 +485,7 @@
         <div class="col-xl-6 text-dark p-4" style="padding-top: 0px !important;">
 
           <h3 class="fw-bold mb-3 text-dark">
-            <span style="color:#3c7fff;">Demtek Quartz Ankara</span><br>
+            <span style="color:#157a97;">Demtek Quartz Ankara</span><br>
             %50 Peşin Geri kalanı 24 ay 0 Faiz
           </h3>
 
@@ -584,7 +585,7 @@
         <!-- LEFT: SLIDER -->
         <div class="col-xl-6 p-0">
 
-          <div class="swiper mainSwiper position-relative" style="border-radius: 5px;">
+          <div class="swiper mainSwiper position-relative" style="border-radius: 0px;">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img
@@ -1020,7 +1021,7 @@
         <div class="col-xl-6 text-dark p-4" style="padding-top: 0px !important;">
 
           <h3 class="fw-bold mb-3 text-dark">
-            <span style="color:#3c7fff;">Demtek Ovalife Ankara</span><br>
+            <span style="color:#157a97;">Demtek Ovalife Ankara</span><br>
             Etlik – Ovakent’te Modern Yaşamın Yeni Standartı
           </h3>
 
@@ -1139,7 +1140,7 @@
         <!-- LEFT: SLIDER -->
         <div class="col-xl-4 p-0">
 
-          <div class="swiper mainSwiper position-relative" style="border-radius: 5px; ">
+          <div class="swiper mainSwiper position-relative" style="border-radius: 0px; ">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img src="newimg/3 (1).jpg" class="img-fluid w-100" alt="">
@@ -1179,7 +1180,7 @@
         <div class="col-xl-8 text-dark p-4" style="padding-top: 0px !important;">
 
           <h3 class="fw-bold mb-3 text-dark">
-            <span style="color:#3c7fff;">Demtek Doğan Tower</span><br>
+            <span style="color:#157a97;">Demtek Doğan Tower</span><br>
             Modern Mimarinin Zirvesi – 28 Kat, 84 Daire, Özel Ticari Alanlar
           </h3>
 
@@ -1287,13 +1288,11 @@
           watchSlidesProgress: true,
         });
 
-        // Main swiper
+       // Main swiper
         const mainSwiper = new Swiper(mainEl, {
           spaceBetween: 10,
-          autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-          },
+          loop: true,
+
           pagination: {
             el: mainEl.querySelector('.swiper-pagination'),
             clickable: true,
@@ -1498,7 +1497,7 @@
       background: linear-gradient(120deg, #0d7734 60%, #0d7734 60%);
       color: #ffffff;
       padding: 8px 15px;
-      border-radius: 5px;
+      border-radius: 0px;
       font-size: 13px;
       box-shadow: 0 0 15px #00000050;
       z-index: 158;
