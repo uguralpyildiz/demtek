@@ -872,7 +872,154 @@
   </section>
 
 
+  <script>
+    (function () {
+      const vids = Array.from(document.querySelectorAll("video.nwgm-tapvid"))
+        .filter(v => !v.classList.contains("nwgm-thumbvid"));
 
+      if (!vids.length) return;
+
+      let active = null;
+
+      function stopAllExcept(current) {
+        vids.forEach(v => {
+          if (v !== current) {
+            v.pause();
+            v.muted = true;
+            v.removeAttribute("controls");
+            const wrap = v.closest(".nwgm-vwrap");
+            if (wrap) wrap.classList.remove("is-active");
+          }
+        });
+      }
+
+      function ensureWrap(video) {
+        const p = video.parentElement;
+        if (!p) return null;
+
+        if (!p.classList.contains("nwgm-vwrap")) {
+          const wrap = document.createElement("div");
+          wrap.className = "nwgm-vwrap";
+          wrap.style.position = "relative";
+          p.insertBefore(wrap, video);
+          wrap.appendChild(video);
+          return wrap;
+        }
+        return p;
+      }
+
+      function ensureControls(video) {
+        const wrap = ensureWrap(video);
+        if (!wrap) return;
+
+        let bar = wrap.querySelector(".nwgm-igbar");
+        if (bar) return;
+
+        bar = document.createElement("div");
+        bar.className = "nwgm-igbar";
+        bar.innerHTML = `
+              <button class="nwgm-igbtn nwgm-igtoggle" type="button">Durdur</button>
+              <button class="nwgm-igbtn nwgm-igmute" type="button">Sesi Kapat</button>
+            `;
+        wrap.appendChild(bar);
+
+        const btnToggle = bar.querySelector(".nwgm-igtoggle");
+        const btnMute = bar.querySelector(".nwgm-igmute");
+
+        function sync() {
+          btnToggle.textContent = video.paused ? "Oynat" : "Durdur";
+          btnMute.textContent = video.muted ? "Sesi Aç" : "Sesi Kapat";
+        }
+
+        btnToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (video.paused) {
+            const p = video.play();
+            if (p && p.catch) p.catch(() => { });
+          } else {
+            video.pause();
+          }
+          sync();
+        });
+
+        btnMute.addEventListener("click", (e) => {
+          e.stopPropagation();
+          video.muted = !video.muted;
+          if (!video.muted) {
+            const p = video.play();
+            if (p && p.catch) p.catch(() => { });
+          }
+          sync();
+        });
+
+        ["play", "pause", "volumechange"].forEach(ev => video.addEventListener(ev, sync));
+        sync();
+      }
+
+      // mini css’yi js ile basıyorum class çakışmasın diye
+      const style = document.createElement("style");
+      style.textContent = `
+            .nwgm-vwrap.is-active .nwgm-igbar{ opacity:1; transform:translateY(0); pointer-events:auto; }
+            .nwgm-igbar{
+              position:absolute; left:12px; right:12px; bottom:12px;
+              display:flex; gap:10px; justify-content:flex-end;
+              padding:10px; border-radius:14px;
+              background:rgba(255,255,255,.78); backdrop-filter:blur(10px);
+              border:1px solid rgba(15,23,42,.12);
+              box-shadow:0 10px 30px rgba(15,23,42,.12);
+              opacity:0; transform:translateY(6px);
+              pointer-events:none; transition:.18s ease; z-index:5;
+            }
+            .nwgm-igbtn{
+              border:1px solid rgba(15,23,42,.12);
+              background:#fff; border-radius:12px;
+              padding:8px 10px; cursor:pointer;
+              font-weight:800; color:#0f172a;
+            }
+          `;
+      document.head.appendChild(style);
+
+      async function activate(video) {
+        stopAllExcept(video);
+        active = video;
+
+        ensureControls(video);
+
+        const wrap = ensureWrap(video);
+        if (wrap) wrap.classList.add("is-active");
+
+        // instagram hissi: tıkla -> ses aç + play
+        video.muted = false;
+
+        // iOS bazen sesli autoplay'e trip atar, play deniyoruz
+        try {
+          await video.play();
+        } catch (e) {
+          // yine engellerse en azından kontrol göster
+          video.setAttribute("controls", "controls");
+        }
+      }
+
+      vids.forEach(video => {
+        // başlangıç: autoplay için muted
+        if (video.muted === false) video.muted = true;
+
+        // tıklanınca aktifleş
+        video.addEventListener("click", (e) => {
+          e.stopPropagation();
+          activate(video);
+        });
+      });
+
+      // dışarı tıklayınca sadece barı gizle (video çalmaya devam edebilir)
+      document.addEventListener("click", () => {
+        vids.forEach(v => {
+          const wrap = v.closest(".nwgm-vwrap");
+          if (wrap) wrap.classList.remove("is-active");
+        });
+      });
+    })();
+  </script>
 </div>
 <div id="kesfet" class="allinone">
 
